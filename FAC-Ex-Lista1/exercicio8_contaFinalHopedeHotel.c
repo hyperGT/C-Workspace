@@ -64,7 +64,6 @@ int main(void)
     subTotal = hotelRatesTotalValue + internalConsumeValue;
     TotalCost = subTotal + (subTotal * 0.1);
 
-
     printf("\nNome do Hospede: %s", name);
     printf("\nTipo de apartamento escolhido: %c\n", aptType);
     printf("\nValor da diaria do apartamento: %d", hotelRatesValue);
