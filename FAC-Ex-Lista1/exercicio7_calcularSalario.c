@@ -22,7 +22,7 @@ hora trabalhada acima das 40 iniciais.
     // valor do salario semanal
     int weeklySalary;
 
-    printf("Insira a quantidade de horas que o usuário trabalhou: ");
+    printf("Insira a quantidade de horas que o usuario trabalhou: ");
     scanf("%d", &hoursWorked);
 
     printf("Insira a valor de reais que se recebe por hora trabalhada: ");
@@ -30,7 +30,7 @@ hora trabalhada acima das 40 iniciais.
 
     if (hoursWorked <= 40)
     {
-        // valor 38 reais adicionado como teste
+		// calculando o salario semanal sem o extra das horas trabalhadas acima de 40        
         weeklySalary = moneyPerHour * hoursWorked;
     }
     else 
@@ -40,5 +40,5 @@ hora trabalhada acima das 40 iniciais.
     }
 
     printf("Quantidade de horas trabalhadas: %d", hoursWorked);
-    printf("\nO salário semanal do funcionário é: %d", weeklySalary);
+    printf("\nO salario semanal do funcionario: %d", weeklySalary);
 }

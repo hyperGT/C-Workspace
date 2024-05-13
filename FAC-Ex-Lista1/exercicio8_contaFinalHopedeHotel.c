@@ -69,6 +69,6 @@ int main(void)
     printf("\nValor da diaria do apartamento: %d", hotelRatesValue);
     printf("\nValor total da diaria do apartamento: %.2f",hotelRatesTotalValue);
     printf("\nvalor do consumo interno: %.2f", internalConsumeValue);
-    printf("\nSubtotal: %.2f + %.2f (Taxa de Serviços)", subTotal, TotalCost - subTotal);
+    printf("\nSubtotal: %.2f + %.2f (Taxa de Servicos)", subTotal, TotalCost - subTotal);
     printf("\nTotal: %.2f", TotalCost);
 }
