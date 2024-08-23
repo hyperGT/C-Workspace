@@ -8,23 +8,22 @@ Questão 01:
 
 #include <stdio.h>
 
-void stcpy(char s1[], char s2[]){
+void strCopia(char s1[], char s2[]){
 	
-	int i = 0, j = 0;
+	int i = 0;
 	
 	/*
 	while(s2[i]){
 		
-		s1[i] = s2[j];
+		s1[i] = s2[i];
 		
 		i++;
-		
-		j++;
+
 	}*/
 	
-	// ou 
-	for(i = 0, j = 0; s2[i] != '\0'; i++, j++){
-		s1[i] = s2[j];
+	// ou
+	for(i = 0; s2[i] != '\0'; i++){
+		s1[i] = s2[i];
 	}
 	
 	s1[i] = '\0';
@@ -37,7 +36,7 @@ int main(){
 	printf("Insira um texto: ");
 	gets(str);
 	
-	stcpy(strC, str);
+	strCopia(strC, str);
 	
 	printf("Texto copiado: %s\nTexto 2: %s\n", strC, str);
 	
