@@ -33,8 +33,8 @@ int qntSameChar (char *str1, char *str2, int i, int j){
 
     if(str2[j] == '\0') return qntSameChar(str1, str2, i+1, 0);
 
-    // os caracteres forem iguais
-    if(str1[i] == str2[j]){    // caso geral
+    // caso os caracteres forem iguais
+    if(str1[i] == str2[j]){   // caso geral
         return 1 + qntSameChar(str1, str2, i+1, 0);
     }else{
         return qntSameChar(str1, str2, i, j+1);
