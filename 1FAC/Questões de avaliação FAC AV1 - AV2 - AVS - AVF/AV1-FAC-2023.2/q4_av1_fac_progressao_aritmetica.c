@@ -24,7 +24,9 @@ mas...como fazer uma verificar se é ou não uma P.A?
 
 5, 10, 15, 
 
-guarde o primeiro valor e pegue a diferença com o segundo, no caso acime 10 - 5 = 5. Pegue essa diferença e some com o segundo
+guarde o primeiro valor e pegue a diferença com o segundo, no caso acima 10 - 5 = 5. 
+Pegue essa diferença e some com o segundo 
+
 observe o prox valor.
 
 quebrar essa sequencia em partes(pares: a1 com a2, a2 com a3)
@@ -46,42 +48,42 @@ int main(){
 	}else{
 		
 		printf("Insira o valor de n: ");
-	scanf("%d", &n);
-	
-	printf("Insira o 1° valor(a1): ");
-	scanf("%d", &a1); // 5
-	
-	printf("Insira o 2° valor(a2): ");
-	scanf("%d", &a2); // 5
-	
-	diff1 = a2 - a1;
-	
-	//printf("\nDiferença inicial: %d", diff1);
+		scanf("%d", &n);
+		
+		printf("Insira o 1° valor(a1): ");
+		scanf("%d", &a1); // 5
+		
+		printf("Insira o 2° valor(a2): ");
+		scanf("%d", &a2); // 5
+		
+		diff1 = a2 - a1;
+		
+		//printf("\nDiferença inicial: %d", diff1);
+				
+		//segundo passo: sequencia de valores
+		int i = 1, cont = 3; // esse cont aí é só pra fins de contagem
+		while(i <= (n-2)){
 			
-	//segundo passo: sequencia de valores
-	int i = 1, cont = 3; // esse cont aí é só pra fins de contagem
-	while(i <= (n-2)){
-		
-		printf("\nInsira o %dº valor(a%d): ", cont, cont);
-		scanf("%d", &valorInserido); // 10, 15, 20, 25
-		
-		//printf("\nValor inserido: %d", valorInserido);
-		
-		diff2 = valorInserido - a2;
-		a2 = valorInserido;		
-		
-		//terceiro passo: verificar se é P.A ou n
-		if(diff1 == diff2){
-			verify = 1; // Isso significa que é uma P.A
-			diff1 = diff2;
+			printf("\nInsira o %dº valor(a%d): ", cont, cont);
+			scanf("%d", &valorInserido); // 10, 15, 20, 25
+			
+			//printf("\nValor inserido: %d", valorInserido);
+			
+			diff2 = valorInserido - a2;
+			a2 = valorInserido;		
+			
+			//terceiro passo: verificar se é P.A ou n
+			if(diff1 == diff2){
+				verify = 1; // Isso significa que é uma P.A
+				diff1 = diff2;
+			}
+			else{
+				verify = 0; // deu false, logo não é uma P.A								
+			}
+	
+			cont++;		
+			i++;				
 		}
-		else{
-			verify = 0; // deu false, logo não é uma P.A								
-		}
-
-		cont++;		
-		i++;				
-	}
 	}
 	
 	if(verify == 1){
@@ -90,7 +92,6 @@ int main(){
 	else if(verify == 0){
 		printf("\nA sequencia digitada NAO e uma P.A");
 	}
-	
-	
+		
 }
 

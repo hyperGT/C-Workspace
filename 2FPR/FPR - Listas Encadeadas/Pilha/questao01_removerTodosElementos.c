@@ -1,11 +1,11 @@
 /*
-Pilhas - Funções básicas
-LIFO: Último a entrar é o primeiro a sair
+Pilhas - Funï¿½ï¿½es bï¿½sicas
+LIFO: ï¿½ltimo a entrar ï¿½ o primeiro a sair
 
-Questão 01:
-Desenvolver uma função que remova todos os elementos de uma pilha P do tipo TLista e retorne a
+Questï¿½o 01:
+Desenvolver uma funï¿½ï¿½o que remova todos os elementos de uma pilha P do tipo TLista e retorne a
 quantidade de elementos que existiam em P.
-Nota: as regras de manipulação de uma pilha clássica devem ser respeitadas.
+Nota: as regras de manipulaï¿½ï¿½o de uma pilha clï¿½ssica devem ser respeitadas.
 
 */
 
@@ -21,7 +21,7 @@ typedef struct No{
 
 typedef TNo* TLista;
 
-// protótipos das funções
+// protï¿½tipos das funï¿½ï¿½es
 int empilhar(TLista *P, int numero);
 int desempilhar(TLista *P, int *numero);
 int topo (TLista P, int *numero);
@@ -38,17 +38,17 @@ void main(){
 	{
 		system ("CLS");		//limpar tela
 
-		//exibindo o meu ao usuário
+		//exibindo o meu ao usuï¿½rio
 		op = menu ();
 
-		//verificando a opção escolhida
+		//verificando a opï¿½ï¿½o escolhida
 		switch (op)
 		{
-			//Inserção
+			//Inserï¿½ï¿½o
 			case 1: printf ("\nEntre com o valor a ser inserido: ");
 			        scanf ("%d", &num);
 			        
-			        //chamando a função
+			        //chamando a funï¿½ï¿½o
 			        if (empilhar (&P, num) == 1)   //ou apenas: if (empilhar (&P, num))
 			        {
 			        	printf ("\n\tInsercao realizada com sucesso!");
@@ -59,8 +59,8 @@ void main(){
 					}
 					break;
 
-			//Remoção
-			case 2: //chamando a função
+			//Remoï¿½ï¿½o
+			case 2: //chamando a funï¿½ï¿½o
 			        if (desempilhar (&P, &num) == 1)
 			        {
 			        	printf ("\n\tElemento %d removido da pilha!", num);
@@ -82,7 +82,7 @@ void main(){
 					}
 					break;
 
-			//Saída
+			//Saï¿½da
 			case 4: 
 				
 				qnt = removerTodosPilha(&P);
@@ -114,7 +114,7 @@ int removerTodosPilha(TLista *P){
 	TLista aux;
 	int cont = 0;
 	
-	// verifica se a pilha está vazia
+	// verifica se a pilha estï¿½ vazia
 	if(!(*P)){
 		return 0;
 	}else{
@@ -122,7 +122,7 @@ int removerTodosPilha(TLista *P){
 		
 		while(*P != NULL){
 			
-			// 'aux' recebe o endereço do nó do topo
+			// 'aux' recebe o endereï¿½o do nï¿½ do topo
 			aux = *P;
 			
 			*P = (*P)->prox;
@@ -143,21 +143,21 @@ int empilhar (TLista *P, int numero){
 	
 	TLista aux;
 	
-	// aloca memória para um novo nó
+	// aloca memï¿½ria para um novo nï¿½
 	aux = malloc(sizeof(TNo));
 	
-	// verifica se a memória foi alocada
+	// verifica se a memï¿½ria foi alocada
 	if(!aux){
 		return 0;
 	}else{
 		
-		// guarda o valor no nó
+		// guarda o valor no nï¿½
 		aux->valor = numero;
 		
-		// aponta o novo nó pro antigo topo
+		// aponta o novo nï¿½ pro antigo topo
 		aux->prox = *P;
 		
-		// o novo nó agora é referenciado como o novo nó no topo
+		// o novo nï¿½ agora ï¿½ referenciado como o novo nï¿½ no topo
 		*P = aux;
 				
 		return 1;
@@ -168,21 +168,21 @@ int desempilhar (TLista *P, int *numero){
 	
 	TLista aux;
 	
-	// verificando se a pilha está vazia
+	// verificando se a pilha estï¿½ vazia
 	if(!(*P)){
 		return 0;
 	}else{		
 		
-		// 'aux' recebe o ponteiro pro nó a ser excluido(o valor que está no topo)
+		// 'aux' recebe o ponteiro pro nï¿½ a ser excluido(o valor que estï¿½ no topo)
 		aux = *P;
 		
-		// o valor a ser excluido é armazenado
+		// o valor a ser excluido ï¿½ armazenado
 		*numero = (*P)->valor;
 		
-		// o valor logo abaixo do topo é referenciado como novo topo
+		// o valor logo abaixo do topo ï¿½ referenciado como novo topo
 		*P = (*P)->prox;
 		
-		// liberando a memória do topo
+		// liberando a memï¿½ria do topo
 		free (aux);
 	}
 	
@@ -200,10 +200,10 @@ int topo (TLista P, int *numero){
 
 int menu (){
 	
-	//declaração de variáveis
+	//declaraï¿½ï¿½o de variï¿½veis
 	int opcao;
 	
-	//exibindo o meu ao usuário
+	//exibindo o meu ao usuï¿½rio
 	printf ("Menu de Operacoes:\n\n");
 	printf ("(1) Empilhar\n");
 	printf ("(2) Desempilhar\n");
@@ -211,10 +211,10 @@ int menu (){
 	printf ("(4) Limpar pilha\n");
 	printf ("(5) Sair\n\n");
 	
-	//lendo a opção do usuário
+	//lendo a opï¿½ï¿½o do usuï¿½rio
 	printf ("Entre com a sua opcao: ");
 	scanf ("%d", &opcao);
 	
-	//retornando a opção escolhida
+	//retornando a opï¿½ï¿½o escolhida
 	return opcao;
 }

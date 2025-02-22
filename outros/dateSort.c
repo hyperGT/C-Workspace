@@ -47,7 +47,7 @@ void dateSortJap(int d, int m, int y){
 
 }
 
-// ano, mes, dia
+// dia, mes, ano
 void dateSortBr(int d, int m, int y){
 
 	printf("\n %d / %d / %d ", d, m, y);
