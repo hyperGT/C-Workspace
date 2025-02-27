@@ -26,12 +26,16 @@ void main(){
 	printf("b: ");
 	scanf("%d", &b);
 	
-	/*	
+	// testando se os valores são válidos
+	if(a<1){
+		a = 1;
+	}
+	
 	if(a>b){
-		printf("A deve ser maior que B");
+		printf("A deve ser menor que B!");
 		return 1;
 	}
-	*/
+	
 	
 	nPotenciasDe2(a, b, &maiorPot, &qntPotencias);
 	
@@ -43,8 +47,8 @@ void main(){
 
 void nPotenciasDe2(int a, int b, int *maiorPot, int *qntPot){
 	
-	int i, j=1;
-	*qntPot=0;
+	int i, j=a;	// 3.784 s vs media(2.500s)
+	*qntPot=0;		
 	
 	// variando j até chegar a b
 	while(j<b){
