@@ -11,7 +11,7 @@
 
 /* Structs */
 struct type_atleta {
-	int tempo, codigo;
+	int tempo, codigo;		
 };
 typedef struct type_atleta tAtleta;
 
