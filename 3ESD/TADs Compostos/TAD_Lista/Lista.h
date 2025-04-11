@@ -1,8 +1,9 @@
 /*
 * Minha versão do TAD Lista
+* Gabriel Teixeira Charles da Silva
 */
 
-typedef struct tipo_lista tLista
+typedef struct tipo_lista tLista;
 
 /* Criar uma nova lista */
 tLista * lst_criarListaVazia(int maximo, int classif, int repeticao);
@@ -12,6 +13,9 @@ int lst_incluirElemento(tLista *lst, int num);
 
 /* Exclui um valor da lista */
 int lst_excluirElemento(tLista *lst, int num);
+
+/* Exclui toda a lista da memória */
+void lst_free(tLista *lst);
 
 /* Verifica se a lista está vazia, retornando 1 caso esteja e 0 caso contrário */
 int lst_estaVazia(const tLista *lst);
