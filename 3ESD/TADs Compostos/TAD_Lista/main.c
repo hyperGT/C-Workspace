@@ -2,11 +2,11 @@
 #include "Lista.h"
 
 int main() {
-    // Criando lista com capacidade 10, NÃƒO ordenada, COM repetiÃ§Ã£o
+    // Criando lista com capacidade 10, Não ordenada, COM repetição
     
     tLista *lista = lst_criarListaVazia(10, 0, 1); 
 
-    printf("Inserindo elementos na lista (nÃ£o ordenada, com repetiÃ§Ã£o):\n");
+    printf("Inserindo elementos na lista (não ordenada, com repetição):\n");
     lst_incluirElemento(lista, 5);
     lst_incluirElemento(lista, 3);
     lst_incluirElemento(lista, 7);
@@ -20,7 +20,7 @@ int main() {
         
     lst_free(lista);
     
-    printf("\nCriando nova lista ordenada, SEM repetiÃ§Ã£o...\n");
+    printf("\nCriando nova lista ordenada, SEM repetição...\n");
     tLista *listaOrd = lst_criarListaVazia(10, 1, 0);
     if (!listaOrd) {
         printf("Erro ao criar lista ordenada.\n");

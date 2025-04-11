@@ -56,7 +56,7 @@ void movePraDireita(tLista *l, int pos) {
 	if (l->qntNos >= l->tamMax) return;
 	
 	int i;
-	for(i=l->qntNos; i>pos; i++) {
+	for(i=l->qntNos; i>pos; i--) {
 		l->vetNos[i] = l->vetNos[i-1];
 	}
 }
@@ -90,70 +90,72 @@ void lst_free(tLista *lst) {
 
 /* Inclui um novo elemento na lista */
 int lst_incluirElemento(tLista *lst, int num) {
-    // Verifica se a lista está cheia
-    if (lst_estaCheia(lst)) return 0;
-
-    int novaPos = 0;
-    int achou = 0;
-
-    if (lst_eClassif(lst)) {
-        // Lista é classificada → usa busca binária
-        achou = buscaBinaria(lst, num, &novaPos);
-
-        // Se não permite repetição e o elemento já existe, não insere
-        if (!lst_temRepet(lst) && achou) return -1;
-
-        // Abre espaço para o novo valor
-        movePraDireita(lst, novaPos);
-
-    } else {
-        // Lista NÃO é classificada → inserção no final
-        // Se não permite repetição, verifica se o valor já existe
-        if (!lst_temRepet(lst) && buscaSequencial(lst, num, &novaPos)) {
-            return -1;
-        }
-
-        novaPos = lst->qntNos;
-    }
-
-    // Insere o valor na posição apropriada
-    lst->vetNos[novaPos] = num;
-    lst->qntNos++;
-    return 1;
+    
+    if(!lst || lst_estaCheia(lst)) return 0;
+    
+    int pos, achou;
+    
+    // lista n�o ordenada
+    if(!lst_eClassif(lst)){
+    	if(!lst_temRepet(lst)){
+    		achou = buscaSequencial(lst, num, &pos);
+    		if(achou) return 0; // Elemento j� existe
+		}
+		// Insere no final 
+		pos = lst->qntNos;
+	}
+	// lista ordenada 
+	else{
+		
+		achou = buscaBinaria(lst, num, &pos);
+		
+		// verifica se pode inserir
+		if(achou && !lst_temRepet(lst)){
+			return 0;
+		}
+		
+		movePraDireita(lst, pos);
+	}
+	
+	// insere o elemento
+	lst->vetNos[pos] = num;
+	lst->qntNos++;
+	return 1;
 }
 
 
 /* Exclui um valor da lista */
 int lst_excluirElemento(tLista *lst, int num) {
+    
+    if(!lst || lst_estaVazia(lst)) return 0;
 
-	int achou,
-	    i,
-	    qt = 0, // quantidade de elementos a serem removidos
-	    pos = 0;
+    // qt = quantidade de elementos a serem removidos
+	int achou, i, qt = 0, pos = 0;
 
-	// verificar se a lista estC! vazia
-	if(lst_estaVazia(lst)) return 0;
-
-	// lista ordenada
 	if(lst_eClassif(lst)) {
-
+        
+        // lista ordenada -> usa busca binária
 		achou = buscaBinaria(lst, num, &pos);
-		if(!achou) return -1;
+		
+		if(!achou) return -1; // elemento não encontrado
 
-		// se nC#o tiver repetiC'C#o
+        // lista ordenada e com repetição -> 
 		if(lst_temRepet(lst)) {
 			int i = pos;
 			while(i < lst->qntNos && lst->vetNos[i] == num) {
-				// atualizando a quantidade de elementos a serem removidos
-				qt++;
-				// atualizando a posiC'C#o do C-ndice
-				i++;
+				qt++;   // atualizando a quantidade de elementos a serem removidos
+				i++;    // atualizando a posição do índice
 			}
 		} else {
-			qt = 1; // nC#o possui repetiC'C#o, logo, apenas 1 elemento serC! removido da lista
+			qt = 1; // apenas uma ocorrência (Sem repetição)
 		}
+		
+		// Remove os elementos
+		movePraEsquerda(lst, pos, qt);
+		lst->qntNos -= qt;
+		return 1;
 
-	} else { // caso nC#o seja classificada
+	} else { // caso não seja ordenada
 
 		if(lst_temRepet(lst)) {
 			int i, j=0;
@@ -163,23 +165,18 @@ int lst_excluirElemento(tLista *lst, int num) {
 				}
 			}
 			qt = lst->qntNos - j; // elementos removidos
-			lst->qntNos -= j;
-			return qt > 0 ? 1 : -1;
+			lst->qntNos = j;
+			return (qt > 0) ? 1 : -1;
 		} else {
 			achou = buscaSequencial(lst, num, &pos);
 
 			if(!achou) return -1;
-
-			qt = 1;
+        
+            movePraEsquerda(lst, pos, 1);
+            lst->qntNos--;
+            return 1;
 		}
 	}
-
-	if(qt>0) {
-		movePraEsquerda(lst, pos, qt);
-		lst->qntNos -= qt;
-		return 1;
-	}
-	return -1;
 }
 
 /* Verifica se a lista estC! vazia, retornando 1 caso esteja e 0 caso contrC!rio */
