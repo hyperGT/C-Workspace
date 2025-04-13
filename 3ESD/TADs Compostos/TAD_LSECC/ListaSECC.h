@@ -7,10 +7,12 @@ typedef struct LSE tLSE;
 
 
 // funções 
-tLSE * lse_criarLista(int classificada, int repete);
+
+/* Cria uma lista simplesmente encadeada vazia*/
+tLSE * lse_criar_lista(int classificada, int repete);
 
 void lse_classificada(const tLSE *l);
 
 void lse_repeticao(const tLSE *l);
 
-void lse_vazia(const tLSE *l);
+void lse_lista_vazia(const tLSE *l);
